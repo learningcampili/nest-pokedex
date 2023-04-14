@@ -1,10 +1,11 @@
 
-version: '3'
+version: '3.8'
 
 
 services:    
   db:
     image: mongo:5
+    container_name: nest_pokemon_mongo_db
     restart: always
     ports:
       - 27017:27017
