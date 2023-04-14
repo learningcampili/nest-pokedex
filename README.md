@@ -5,6 +5,9 @@
 # Ejecutar en desarrollo
 
 1. Clonar el repositorio
+```
+git clone https://github.com/learningcampili/nest-pokedex.git
+```
 2. Ejecutar
 ```
 yarn install
@@ -18,6 +21,11 @@ sudo npm i -g @nestjs/cli
 ```
 
 docker compose up -d
+```
+
+5. Recostruir base de datos con la semilla
+```
+http:///localhost:3000/seed
 ```
 ## Stack utilizado
   * MondoDb
