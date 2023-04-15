@@ -22,11 +22,27 @@ sudo npm i -g @nestjs/cli
 
 docker compose up -d
 ```
+5. clonar el archivo 
+```
+__.env.template__  y renombrar a __.env__
 
-5. Recostruir base de datos con la semilla
 ```
-http:///localhost:3000/seed
+
+6. Completar las variables de entorno definidas en el
 ```
+.env
+```
+
+7. Levatar la aplicacion
+```
+yarn start:dev
+```
+
+8. Recostruir base de datos con la semilla
+```
+http:///localhost:3000/api/v2/seed
+```
+
 ## Stack utilizado
   * MondoDb
   * Nest
