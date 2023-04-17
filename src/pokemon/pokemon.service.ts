@@ -21,23 +21,20 @@ export class PokemonService {
 
  async  create(createPokemonDto: CreatePokemonDto) {   
 
-    createPokemonDto.name = createPokemonDto.name.toLowerCase()
+    createPokemonDto.name = createPokemonDto.name.toLowerCase();
   try {
-    const pokemon = await this.pokemonModel.create(createPokemonDto)
+    const pokemon = await this.pokemonModel.create(createPokemonDto);
     return pokemon;
 
   } catch (error) {
-    this.handleExceptions(error)
+    this.handleExceptions(error);
   }
 }
   
 
   async findAll(paginationDto:PaginationDto) {
-
-   // el process.env es un string
-   
-
-    const {limit= this.defaultLimit,offset=0} = paginationDto
+    
+    const {limit= this.defaultLimit,offset=0} = paginationDto;
 
     return this.pokemonModel.find({})
     .limit(limit)
@@ -53,17 +50,19 @@ export class PokemonService {
      let pokemon:Pokemon
 
      if(!isNaN(+term)){
-      pokemon = await this.pokemonModel.findOne({no:term})
+      pokemon = await this.pokemonModel.findOne({no:term}).select('-__v')
+     
      }
      
      // MongoId
      if(!pokemon && isValidObjectId(term)){
-      pokemon = await this.pokemonModel.findById(term)
+      pokemon = await this.pokemonModel.findById(term).select('-__v')
+      
      }
 
      // Name
      if(!pokemon){
-     pokemon = await this.pokemonModel.findOne({name:term.toLowerCase().trim()})
+     pokemon = await this.pokemonModel.findOne({name:term.toLowerCase().trim()}).select('-__v')
      }
 
      if(!pokemon) throw new NotFoundException(`pokemon not found`)
